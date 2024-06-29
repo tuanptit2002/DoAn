@@ -26,8 +26,8 @@ public class StudentController {
         return studentService.updateStudent(new StudentMapper().studentMapper(studentDTO));
     }
 
-    @DeleteMapping("/delete/:id")
-    public ResponseEntity<?> deleteStudent(@RequestParam int id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteStudent(@PathVariable int id) {
         return studentService.deleteStudent(id);
     }
 
