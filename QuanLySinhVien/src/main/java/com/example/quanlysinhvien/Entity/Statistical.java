@@ -15,7 +15,7 @@ public class Statistical {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private double pointAvg;
     private double pointTraining;
 

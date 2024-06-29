@@ -1,9 +1,6 @@
 package com.example.quanlysinhvien.Mapper;
 
-import com.example.quanlysinhvien.DTO.PointDTO;
-import com.example.quanlysinhvien.DTO.StudentDTO;
-import com.example.quanlysinhvien.DTO.SubjectDTO;
-import com.example.quanlysinhvien.DTO.TeacherDTO;
+import com.example.quanlysinhvien.DTO.*;
 import com.example.quanlysinhvien.Entity.*;
 import com.example.quanlysinhvien.Entity.Class;
 
@@ -58,5 +55,52 @@ public class StudentMapper {
         }
 
         return student;
+    }
+
+    public StudentDTO studentDTOMapper(Student student) {
+        StudentDTO studentDTO = new StudentDTO();
+        studentDTO.setLastName(student.getLastName());
+        studentDTO.setFirstName(student.getFirstName());
+        studentDTO.setBirthDate(student.getBirthDate());
+        studentDTO.setHomeTown(student.getHomeTown());
+        if(student.getAClass() != null){
+            ClassDTO classDTO = new ClassDTO();
+            classDTO.setId(student.getAClass().getId());
+            studentDTO.setClassDTO(classDTO);
+        }
+        if(student.getStatistical().getId() != null){
+            StatisticalDTO statisticalDTO = new StatisticalDTO();
+            statisticalDTO.setId(student.getStatistical().getId());
+            studentDTO.setStatisticalDTO(statisticalDTO);
+        }
+        if(student.getSubjects().size() > 0){
+            List<SubjectDTO> subjectDTOS = new ArrayList<>();
+            for (Subject subject : student.getSubjects()){
+                SubjectDTO subjectDTO = new SubjectDTO();
+                subjectDTO.setId(subject.getId());
+                subjectDTOS.add(subjectDTO);
+            }
+            studentDTO.setSubjectDTOS(subjectDTOS);
+        }
+        if(student.getPoints().size() > 0){
+            List<PointDTO> pointDTOS = new ArrayList<>();
+            for(Point point : student.getPoints()){
+                PointDTO pointDTO = new PointDTO();
+                pointDTO.setId(point.getId());
+                pointDTOS.add(pointDTO);
+            }
+            studentDTO.setPointDTOS(pointDTOS);
+        }
+        if(student.getTeachers().size() > 0){
+            List<TeacherDTO> teacherDTOS = new ArrayList<>();
+            for(Teacher teacher : student.getTeachers()){
+                TeacherDTO teacherDTO = new TeacherDTO();
+                teacherDTO.setId(teacher.getId());
+                teacherDTOS.add(teacherDTO);
+            }
+            studentDTO.setTeacherDTOS(teacherDTOS);
+        }
+
+        return studentDTO;
     }
 }
