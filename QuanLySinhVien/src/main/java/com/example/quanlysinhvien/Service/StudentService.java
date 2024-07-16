@@ -1,5 +1,6 @@
 package com.example.quanlysinhvien.Service;
 
+import com.example.quanlysinhvien.DTO.ResponseDTO;
 import com.example.quanlysinhvien.DTO.StudentDTO;
 import com.example.quanlysinhvien.Entity.Student;
 import com.example.quanlysinhvien.Mapper.StudentMapper;
@@ -11,7 +12,7 @@ import java.util.List;
 @Service
 public interface StudentService {
 
-     public ResponseEntity<?> createStudent(Student student);
+     public ResponseDTO<?> createStudent(Student student);
 
      public ResponseEntity<?> updateStudent(Student student);
 

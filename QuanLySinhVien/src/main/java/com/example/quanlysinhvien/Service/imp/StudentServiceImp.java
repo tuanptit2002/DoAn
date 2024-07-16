@@ -1,5 +1,6 @@
 package com.example.quanlysinhvien.Service.imp;
 
+import com.example.quanlysinhvien.DTO.ResponseDTO;
 import com.example.quanlysinhvien.DTO.StudentDTO;
 import com.example.quanlysinhvien.Entity.Statistical;
 import com.example.quanlysinhvien.Entity.Student;
@@ -28,11 +29,11 @@ public class StudentServiceImp implements StudentService {
     StatisticalService statisticalService;
 
     @Override
-    public ResponseEntity<?> createStudent(Student student) {
+    public ResponseDTO<?> createStudent(Student student) {
         Statistical statistical  = statisticalService.create();
         student.setStatistical(statistical);
-        studentRepository.save(student);
-        return new ResponseEntity<>("success", HttpStatus.OK);
+        Student result = studentRepository.save(student);
+        return new ResponseDTO<>(result, "SUCCESS");
     }
 
     public ResponseEntity<?> updateStudent(Student student) {

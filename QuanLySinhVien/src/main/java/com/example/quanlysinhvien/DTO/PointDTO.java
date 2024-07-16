@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 public class PointDTO {
 
-    private int id;
+    private Integer id;
     // chuyen can
     private double diligence;
     // giua ky

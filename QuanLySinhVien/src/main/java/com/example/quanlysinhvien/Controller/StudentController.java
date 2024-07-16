@@ -1,5 +1,6 @@
 package com.example.quanlysinhvien.Controller;
 
+import com.example.quanlysinhvien.DTO.ResponseDTO;
 import com.example.quanlysinhvien.DTO.StudentDTO;
 import com.example.quanlysinhvien.Mapper.StudentMapper;
 import com.example.quanlysinhvien.Service.StudentService;
@@ -17,7 +18,7 @@ public class StudentController {
     StudentService studentService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createStudent(@RequestBody StudentDTO studentDTO) {
+    public ResponseDTO<?> createStudent(@RequestBody StudentDTO studentDTO) {
         return studentService.createStudent(new StudentMapper().studentMapper(studentDTO));
     }
 
@@ -40,4 +41,5 @@ public class StudentController {
     public ResponseEntity<List<StudentDTO>> getAllStudent() {
         return studentService.getAllStudent();
     }
+
 }
